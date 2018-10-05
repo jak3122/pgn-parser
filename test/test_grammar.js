@@ -135,4 +135,9 @@ describe('grammar', () => {
         results[0].moves.should.have.lengthOf(4);
         results[1].moves.should.have.lengthOf(10);
     });
+
+    it('should handle verbose moves', () => {
+        const results = parser.parse('1. Nhg3 f4xe5 2. Be6xd5+ g6g5 3. Nab3 *');
+        results[0].moves.should.have.lengthOf(5);
+    });
 });
