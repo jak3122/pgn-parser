@@ -102,7 +102,7 @@ move = mn:move_number?
        whitespace*
        m:half_move 
        nags:(whitespace+ n:nag {return n})*
-       com:(whitespace+ c2:comment {return c2})? 
+       com:(whitespace+ c2:comment {return c2})* 
        ravs:(whitespace+ r:rav {return r})*
        {return make_move(mn, m, nags, ravs, com)}
 
