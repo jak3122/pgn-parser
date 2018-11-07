@@ -35,7 +35,7 @@
             headers: h.reduce((acc, x) => Object.assign(acc, x), {}),
             comment: c,
             moves: m || [],
-            result: r
+            result: r || "*"
         };
     }
 }
@@ -46,7 +46,7 @@ game =
     h:headers? 
     c:comment? 
     whitespace* 
-    mr:(m:movetext whitespace+ r:result {return [m, r]} / r:result {return [null, r]}) 
+    mr:(m:movetext whitespace+ r:result {return [m, r]} / (m:movetext whitespace* {return [m, null]}) / r:result {return [null, r]}) 
     whitespace* {return make_game(h, c, mr[0], mr[1])}
 
 EOF = !.

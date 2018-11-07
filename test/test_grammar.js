@@ -145,4 +145,10 @@ describe('grammar', () => {
         const results = parser.parse('1. Nf3 { (Kd4c4 Rh8c8+ Kc4b5 Ra8b8+ Kb5a6 Rc8c7 Ka6a5 Rc7a7+) -M4/86 2 } { White forfeits on time } 1/2-1/2');
         results[0].moves.should.have.lengthOf(1);
     });
+
+    it('should allow PGNs without a result at the end (and set result to *)', () => {
+        const results = parser.parse('1. Nhg3 f4xe5 2. Be6xd5+ g6g5 3. Nab3');
+        results[0].moves.should.have.lengthOf(5);
+        results[0].result.should.equal("*");
+    })
 });
